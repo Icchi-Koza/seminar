@@ -1,0 +1,377 @@
+\documentclass[dvipdfmx]{beamer}
+\usepackage{pxjahyper}%しおりの文字化けを防ぐ
+\usetheme{Boadilla}
+\usecolortheme{sidebartab}
+\renewcommand{\kanjifamilydefault}{\gtdefault}%日本語フォントをゴシックに
+\usepackage{bm}
+\usepackage{graphicx}% 各種画像の張り込み
+\usepackage{amsmath}%標準数式表現を拡大する
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\usepackage{color}
+\usepackage{otf}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\setbeamertemplate{button}{\tikz
+  \node[
+  inner xsep=5pt,
+  draw=white,
+  fill=white,
+  rounded corners=4pt]  {\insertbuttontext};}
+\setbeamercolor{button}{bg=red, fg=blue}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+\usepackage{chngpage}
+\usepackage{caption}
+\usepackage{diagbox}
+\newcommand{\bhline}[1]{\noalign{\hrule height #1}}
+\newcommand{\bvline}[1]{\vrule width #1}
+
+%----------- ここからスライド内容 ---------------%
+\title[]{\LARGE 第{\ajRoman{3}}章 基本モデルとその応用}
+\subtitle[]{§4 均衡価格モデルとその応用}
+
+\author[]{小酒井一朗}
+\newcommand{\todayAD}{\number\year 年\number\month 月\number\day 日}
+\date{\todayAD}
+
+
+\begin{document}
+\begin{frame}
+  \titlepage %\maketitleに替わるタイトル情報%
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+
+
+\section{価格モデルの考え方}
+\begin{frame}
+  \begin{description}
+    \item[$\ast$ (円)単位価値]\mbox{}\\  \vspace{0.15in}
+    全ての産業の\alert{生産数量を１円価値相当の数量を単位}として、その物量を評価し
+    各産業生産単位を比較可能にしたもの。\\  \vspace{0.1in}
+    \footnotesize (例) \\A商品100円を生産する為にB商品を50円分投入\\
+    $\rightarrow$ 「1円で買える量のA商品」100個を生産する為に、
+    「1円で買える量のB商品」50個を投入したと考える。
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
+    \includegraphics[keepaspectratio,width=\textwidth]{figure1.png}
+  \end{figure}
+  \begin{block}{生産工程}
+    \hspace{1in} \footnotesize
+    $\forall j \in\{1,2,\dots,n\}$\\ \vspace{-5truemm}\Large
+    \begin{equation}
+      \begin{split}
+        \Sigma_{i=1}^{n}(p_{i}a_{ij})+v_{j}=p_{j}   \notag
+      \end{split}
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  これを行列表現すると、\\  
+  \begin{center}
+    \begin{block}{均衡価格モデル}
+      \begin{equation}
+        \begin{split}
+          (\bm{{}^{t}A})\bm{P}+\bm{V}&=\bm{P}\\
+          \Longleftrightarrow \bm{P}&=(\bm{I}-(\bm{{}^{t}A}))^{-1}\bm{V}={}^{\bm{t}}[(\bm{I}-\bm{A})^{-1}]\bm{V}    \notag
+        \end{split}
+      \end{equation}
+      \footnotesize
+      \vspace{0.3in}\\ 
+      \begin{itemize}
+        \item $A$：投入係数行列
+        \item $P$：商品１からｎまでの価格スカラーベクトル
+        \item $V$：１～ｎ産業の粗付加価値スカラーベクトル
+      \end{itemize}
+    \end{block}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 単位当たり付加価値が賃金上昇の為に増大し、$v_{1}\rightarrow v_{1}+\Delta v_{1}$,
+    $v_{2}\rightarrow v_{2}+\Delta v_{2}$になったケースを考える。
+    \vspace{0.1in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.15in}
+      \item {\color{red}1次波及効果}\hspace{1in} $p_{j}^{(1)}=\Sigma_{i=1}^{n}(p_{i}a_{ij})+{\color{red}v_{j}+\Delta v_{j}}=p_{j}+{\color{red}\Delta v_{j}}$
+      \item {\color{red}2次波及効果}\hspace{0.1in}$p_{j}^{(2)}=\Sigma_{i=1}^{n}\{(p_{i}+{\color{red}\Delta v_{i}})a_{ij}\}+v_{j}+{\color{red}\Delta v_{j}}=p_{j}+{\color{blue}\Sigma_{i=1}^{n}\Delta v_{j}a_{ij}}+{\color{red}\Delta v_{j}}$
+      \item {\color{red}3次波及効果}\hspace{0.35in}$p_{j}^{(3)}=\Sigma_{i=1}^{n}\{(p_{i}+{\color{blue}\Sigma_{i=1}^{n}\Delta v_{i}a_{ij}}+{\color{red}\Delta v_{i}})a_{ij}\}+v_{j}+{\color{red}\Delta v_{j}}=p_{j}+{\color{blue}\Sigma_{i=1}^{n}\Delta v_{j}a_{ij}}+{\color{blue}\Sigma_{i=1}^{n}\Delta v_{j}(a_{ij})^{2}}+{\color{red}\Delta v_{j}}$
+      \item {\color{red}t次波及効果}\hspace{0.3in}$p_{j}^{(t)}=p_{j}+{\color{blue}\Delta v_{j}\{\Sigma_{i=1}^{n}(a_{ij}+(a_{ij})^{2}+\dots+(a_{ij})^{t-1})\}}+{\color{red}\Delta v_{j}}=p_{j}+(I+A+A^{2}+\dots+A^{t-1})^{\prime}\Delta V$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.15in}
+    \item 故に、\hspace{0.2in}
+    \begin{equation}
+      \begin{split}
+        \lim_{t\to\infty}\Delta P^{(t)}=[(I-A)^{-1}]^{\prime}\Delta V   \notag
+      \end{split}
+    \end{equation}
+  \end{itemize}
+\end{frame}
+
+\section{価格の波及効果分析}
+\begin{frame}
+  \begin{itemize}
+    \item 上記の価格均衡モデルを用いる事で、賃上げが各産業に及ぼすコスト増大の
+    影響を知ることが出来る。
+    \vspace{0.05in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.1in}
+      \item 賃金は生産過程においては、付加価値の１ファクターであるために、
+      賃金上昇は付加価値($V$)の上昇と考える。
+      \item 賃金の生産額に対する割合を$W$とすると、賃金の$\alpha\%$の一律上昇は次のように書き表される。
+      \begin{equation}
+        \begin{split}
+          \Delta V=\Delta W *(\alpha*10^{-2})      \notag
+        \end{split}
+      \end{equation}
+      \item 以上より、賃上げによる価格波及効果は
+      \begin{equation}
+        \begin{split}
+          \Delta P=[(I-A)^{-1}]^{\prime}W*(\alpha*10^{-2})   \notag
+        \end{split}
+      \end{equation}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 特定産品の価格変動モデル
+    \begin{itemize}
+      \item 特定部門品の価格が独立して変化した場合($p_{n}\rightarrow p_{n}+\Delta p_{n}$)
+    \end{itemize}
+  \end{itemize}
+  \vspace{0.15in}
+  \begin{equation}
+    \begin{split}
+      p_{j}=p_{1}a_{1,j}+p_{2}a_{2,j}+p_{3}a_{3,j}+\cdots+p_{n-1}a_{n-1,j}+p_{n}a_{n,j}   \notag
+    \end{split}
+  \end{equation}
+  より\\   \tiny
+  \begin{equation}
+    \begin{split}
+      \hspace{-0.2truein}\left(\begin{array}{cc}p_{1}\\p_{2}\\\vdots\\p_{n-1}\end{array}\right)&=\left(\begin{array}{cc}p_{1}a_{1,1}+p_{2}a_{2,1}+\cdots+p_{n-1}a_{n-1,1}\\p_{1}a_{1,2}+p_{2}a_{2,2}+\cdots+p_{n-1}a_{n-1,2}\\\vdots\\p_{1}a_{1,n-1}+p_{2}a_{2,n-1}+\cdots+p_{n-1}a_{n-1,n-1}\end{array}\right)
+      +\left(\begin{array}{cc}a_{n,1}\\a_{n,2}\\\vdots\\a_{n,n-1}\end{array}\right)\cdot{p_{n}}+\left(\begin{array}{cc}v_{1}\\v_{2}\\\vdots\\v_{n-1}\end{array}\right)\\   \notag
+    \end{split}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 上の式より
+    \begin{equation}
+      \begin{split}
+        \bm{p^{n-1}}&={}^{t}A^{(n-1)}\cdot \bm{p^{n-1}}+\bm{a_{n}p_{n}}+\bm{v}\\
+        \Leftrightarrow \hspace{0.2in}(I-{}^{t}A^{(n-1)})\bm{p^{n-1}}&=\bm{a_{n}p_{n}}+\bm{v}     \notag
+      \end{split}
+    \end{equation}
+    \item また、商品の価格に関係なく、各産業の付加価値が一定だと仮定し、上式の両辺に対し、変化量($\Delta$)を取ると、
+    \begin{equation}
+      \begin{split}
+        {}^{t}(I-A^{(n-1)})\Delta\bm{p^{n-1}}&=\bm{a_{(:,1)}}\Delta\bm{p_{n}}  \\
+        \Leftrightarrow\hspace{0.2in} \Delta\bm{p^{n-1}}&=[{}^{t}(I-A^{(n-1)})]^{-1}\bm{a_{(:,1)}}\Delta\bm{p_{n}}  \notag
+      \end{split}
+    \end{equation}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 転置行列の性質として次の性質が成り立つので、
+    \begin{equation}
+      \begin{split}
+        ({}^{t}A)^{-1}&={}^{t}(A^{-1})\\
+        \bm{\Delta p^{n-1}}&={}^{t}B^{(n-1)}\bm{a_{(:,1)}}\Delta\bm{p_{n}}\\
+        &=\left(\begin{array}{cc}b_{n,1}/b_{n,n}\\b_{n,2}/b_{n,n}\\\vdots\\b_{n,n-1}/b_{n,n}\end{array}\right)\Delta\bm{p_{n}}   \notag
+      \end{split}
+    \end{equation}
+    \footnotesize
+    \hspace{1.5in}$\ast$ただし、$(b_{i,j})=(I-A)^{-1}$
+  \end{itemize}
+\end{frame}
+
+
+\section{評価価格の取り扱い}
+\begin{frame}
+  \begin{itemize}
+    \item 輸入品による価格波及分析
+    \vspace{0.2in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.15in}
+      \item 上記のモデルは、閉鎖経済モデルを取り扱っていたが、実際の経済では
+      開放経済にて貿易活動を行っているために、モデルを一部修正することで、実情を捉える。
+      \item 第2節にて扱った通り、輸入を考慮に入れた国内産品の投入係数を考える。
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{非競争輸入型}
+  \begin{figure}
+    \includegraphics[keepaspectratio,scale=0.45]{figure4.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 供給の関係式から
+    \begin{equation}
+      \begin{split}
+        {}^{t}\bm{A^{d}}\bm{p^{d}}+{\color{blue}{}^{t}\bm{A^{m}}\bm{p^{m}}}+\bm{v}&=\bm{p^{d}} \\
+        {}^{t}\left(\bm{I}-\bm{A^{d}}\right)\bm{p^{d}}&={}^{t}\bm{A^{m}}\bm{p^{m}}+\bm{v}\\
+        s.t.\hspace{0.1in} \Delta \bm{v}=\bm{0}\\
+        \Delta \bm{p^{d}}&={\color{blue}\lbrack{}^{t}\left(\bm{I}-\bm{A^{d}}\right)\bm{p^{d}}\rbrack^{-1}\left({}^{t}\bm{A^{m}}\right)\Delta \bm{p^{m}}}  \notag
+      \end{split}
+    \end{equation}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{競争輸入型}
+  \begin{figure}
+    \includegraphics[keepaspectratio,scale=0.55]{figure3.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.15in}
+    \item 需要の関係式から、
+    \begin{equation}
+      \begin{split}
+        \bm{Ax}+\bm{F}+\bm{E}-\bm{M}=\bm{x}\\
+        \bar{\bm{M}}=\bm{\left(m_{ij}\right)}=
+        \begin{cases}
+          \frac{M_{i}}{x_{i}-e_{i}+m_{i}}&(i=j)\\
+          0&(i\neq j)
+        \end{cases}  \notag
+      \end{split}
+    \end{equation}
+    \item 国産品の中間消費量$\left(\bm{Ax^{d}}\right)$と輸入品の中間消費量$\left(\bm{Ax^{m}}\right)$の投入係数は、
+    \begin{equation}
+      \begin{split}
+        \bm{{A}^{d}}&=\left(\bm{I}-\bar{\bm{M}}\right)\bm{A}=\left(\bm{a^{d}_{ij}}\right)     \\
+        \bm{{A}^{m}}&=\bar{\bm{M}}\bm{A}=\left(\bm{a^{m}_{ij}}\right)       \notag
+      \end{split}
+    \end{equation}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \begin{itemize}
+    \item 国産品の価格を$p^{d}$,輸入品の価格を$p^m$とすると、
+    \begin{equation}
+      \begin{split}
+        \bm{p^{d}}=
+        \left(
+          \begin{array}{c}
+            p_{1}^{d}\\
+            p_{2}^{d}\\
+            \vdots\\
+            p_{n}^{d}   
+          \end{array}
+        \right),\hspace{3mm}
+        \bm{p^{m}}=
+        \left(
+          \begin{array}{c}
+            p_{1}^{m}\\
+            p_{2}^{m}\\
+            \vdots\\
+            p_{n}^{m}     \notag
+          \end{array}
+        \right)       
+      \end{split}
+    \end{equation}
+    \item 供給の関係から、
+    \begin{equation}
+      \begin{split}
+        {}^{t}\left(\bm{a}^{d}_{ij}\right)\bm{p^{d}}+{}^{t}\left(\bm{a}^{m}_{ij}\right)\bm{p^{m}}+\bm{v}&=\bm{p} \\
+        \Leftrightarrow {}^{t}\left(\bm{I}-\bar{\bm{M}}\right)\bm{A}\bm{p^{d}}+{}^{t}{\color{blue}\bar{\bm{M}}\bm{A}\bm{p^{m}}}&=\bm{p^{d}}\\
+        \Leftrightarrow \left(\bm{I}-{}^{t}\left(\bm{I}-\bar{\bm{M}}\right)\bm{A}\right)\bm{p^{d}}&={}^{t}\bm{A^{m}}\bm{p^{m}}\\
+        \Leftrightarrow \bm{p^{d}}&=\left(\bm{I}-{}^{t}\left(\bm{I}-\bar{\bm{M}}\right)\bm{A}\right)^{-1}{}^{t}\bm{A^{m}}\bm{p^{m}}\\
+        \Leftrightarrow \Delta \bm{p^{d}}&={\color{blue}{}^{t}\left(\bm{I}-\left(\left(\bm{I}-\bar{\bm{M}}\right)\bm{A}\right)^{-1}\right){}^{t}\bm{A^{m}}\Delta \bm{p^{m}}}   \notag
+      \end{split}
+    \end{equation}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item  購入者価格への変換
+    \begin{itemize}
+      \setlength{\itemsep}{0.1in}
+      \item {\color{red}再掲}\hspace{0.2in} (生産者価格)+(流通マージン単価)=(購入者価格)
+      \item 流通マージン単価変化分は流通マージン部門の生産者価格変化分を、流通マージン表によって品目別に分割して求められる。
+      \item 流通マージン単価は生産者価格が1であれば、流通マージン比率に等しくなる。
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+
+
+\section{価格モデルの限界}
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.2in}
+    \item[1.] 価格モデルは{\color{red}費用構成に基づくコスト側面のみ}の価格波及を示す。
+    \item[2.] 費用の増分を製品価格に転嫁する事によって生ずる価格波及も、現実にはその通り波及せず、途中で消滅したり増幅されるなど、{\color{red}不確定要素}を多く伴い、価格モデルで処理する事が難しい。
+    \item[3.] 価格の変化が齎す{\color{red}需要の代替効果}が考慮されていない。
+    \item[4.] 価格波及が産業相互間に限定されており、{\color{red}家計部門との相互波及関係}が無視されている。
+    \item[5.] 利用できる産業連関表はかなり古い時点のものであり、{\color{red}相対価格変化や輸入品投入率の変化}を無視してしまいかねない。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  1.\\
+  \begin{itemize}
+    \item[$\Rrightarrow$] 価格モデルは、供給側(生産者)側からの費用効果しか見ていなく、市場における需給の需要を無視している。
+    その為にコスト圧力による価格波及効果は価格モデルにて分析可能だが、需要圧力による価格メカニズムは分析できない。 
+  \end{itemize}
+  \vspace{0.1in}
+  2.\\
+  \begin{itemize}
+    \item[$\Rrightarrow$] 波及中断の中でも、例外として価格モデルでの産業連関分析が可能なケースがある。
+    それは、政策価格などによって、その費用増大を容易に価格に転嫁できないような部門があるとき。
+    \item[$\Rrightarrow$] そのような価格波及の中断が予め明らかな場合には、それらの部門を外生部門として、{\color{blue}特定産品の価格変動モデル}にて分析可能。
+  \end{itemize}
+  \vspace{0.1in}
+  3.\\
+  \begin{itemize}
+    \item[$\Rrightarrow$] 実際には財の相対価格変化に応じて、消費(需要)される財の代替が起きるが、価格モデルでは一定としてきた投入係数をも変化させ、実状の経済分析から乖離しかねない。 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  4.\\
+  \begin{itemize}
+    \item[$\Rrightarrow$] 諸物価の上昇は賃金上昇を引き起こし、賃金の上昇が生産者価格の上昇を齎すように、
+    生産者部門と家計部門とは有機的に相関しているが、価格モデルでは家計部門を無視していて、計算結果が過小評価になりかねない。
+    \item[$\Rrightarrow$] しかし、家計部門を内生化させることでこの問題は解決可能。 
+  \end{itemize}
+  \vspace{0.15in}
+  5.\\
+  \begin{itemize}
+    \item[$\Rrightarrow$] 「卸売物価指数」や「貿易統計」等を利用して、投入係数を修正して利用する必要。
+  \end{itemize}
+\end{frame} 
+\end{document}

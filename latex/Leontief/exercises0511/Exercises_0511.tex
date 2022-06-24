@@ -1,0 +1,115 @@
+\documentclass[dvipdfmx]{beamer}
+\usepackage{pxjahyper}%しおりの文字化けを防ぐ
+\usetheme{Frankfurt}
+\usecolortheme{}
+\renewcommand{\kanjifamilydefault}{\gtdefault}%日本語フォントをゴシックに
+\usepackage{graphicx}% 各種画像の張り込み
+\usepackage{amsmath,amssymb}%標準数式表現を拡大する
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{otf}
+\usepackage{tikz}
+
+\setbeamertemplate{button}{\tikz
+  \node[
+  inner xsep=5pt,
+  draw=white,
+  fill=white,
+  rounded corners=4pt]  {\insertbuttontext};}
+\setbeamercolor{button}{bg=red, fg=blue}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+\usepackage{chngpage}
+\usepackage{caption}
+\newcommand{\bhline}[1]{\noalign{\hrule height #1}}
+\newcommand{\bvline}[1]{\vrule width #1}
+
+%----------- ここからスライド内容 ---------------%
+\title[economic M\&A]{\Huge \ajRoman{2}-2 表の形式}
+\subtitle{§１　輸入の取り扱い}
+
+\author[]{小酒井一朗}
+\institute[]{}
+\newcommand{\todayAD}{\number\year 年\number\month 月\number\day 日}
+\date{\todayAD}
+
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+\begin{frame}
+  \centering
+  \begin{itemize}
+    \setlength{\itemsep}{0.3in}
+    \item 前提として、供給部門（列側項目）に関しては、国内生産物と輸入品とを区別して表示
+    \begin{itemize}
+      \item[$\longrightarrow$]  輸入品項目列と国産品部門行との交点セルに輸入額をマイナスとして計上
+    \end{itemize}
+    \item 需要側にて輸入品と国産品を区別するか否かにて表を２種に分類する
+    \begin{itemize}
+      \item[$\longrightarrow$] 需要側にては輸入品と国産品とを分別せずに、一括して表示（{\color{red}競争輸入方式}） 
+      \item[$\longrightarrow$] 需要側にても同種の品目でも国産品と輸入品とを区別して表示（{\color{red}非競争輸入方式}） 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \centering
+  \begin{figure}
+    \includegraphics[keepaspectratio, scale=0.35]{Leontief_PICTURE1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  其々の表形式の特徴・メリット
+  \vspace{0.2in}
+  \begin{itemize}
+    \setlength{\itemsep}{0.35in}
+    \item 競争輸入型
+    \begin{itemize}
+      \item[$\blacktriangleright$] 輸入品消費率が需要部門別に差が無いことを仮定
+      \item[$\blacktriangleright$] 非競争輸入方式よりも輸入品投入係数（国産品輸入係数）が安定的
+      \item[$\blacktriangleright$] 輸入品投入係数の予測修正が簡易的 
+      \item[$\longrightarrow$] 経済の予測・計画等に関しては相性が良い
+    \end{itemize}
+    \item 非競争輸入方式
+    \begin{itemize}
+      \item[$\blacktriangleright$] 現実の輸入品消費構造が明らかにされており、競争輸入方式のような仮定を置く必要が無い
+      \item[$\longrightarrow$]  経済構造の現状分析と相性が良い
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 競争輸入方式と非競争輸入方式の折衷方式として{\color{red}競争・非競争輸入方式}がある。
+    \vspace{0.25in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.35in}
+      \item[$\blacktriangleright$] 一部の主要な輸入品は非競争輸入方式で処理し、残余の輸入品は競争輸入方式にて処理する。
+      \item[$\blacktriangleright$] 部門内における品目別輸入係数の相違を除去できる
+      \item[$\blacktriangleright$] 部門間における輸入品消費率の相違に基づく競争輸入方式での分析誤差を回避できる。 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
+    \includegraphics[keepaspectratio, scale=0.35]{Leontief_PICTURE2.png}
+  \end{figure}
+  \begin{itemize}
+    \item 作表方法
+    \begin{enumerate}
+      \item[1.] 競争輸入方式の表を作成する
+      \item[2.] 競争輸入方式の票を国産・輸入に分割して作成する。
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+\end{document}

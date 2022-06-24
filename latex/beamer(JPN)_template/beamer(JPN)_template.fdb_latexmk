@@ -1,0 +1,11 @@
+# Fdb version 3
+["dvipdf"] 0 "beamer(JPN)_template.dvi" "beamer(JPN)_template.pdf" "beamer(JPN)_template" 0
+  "beamer(JPN)_template.dvi" 0 -1 0 "latex"
+  (generated)
+  "beamer(JPN)_template.pdf"
+["latex"] 0 "beamer(JPN)_template.tex" "beamer(JPN)_template.dvi" "beamer(JPN)_template" 0
+  "beamer(JPN)_template.aux" 1651291195 34 3985256e7290058c681f74d7a3565a19 ""
+  "beamer(JPN)_template.tex" 0 -1 0 ""
+  (generated)
+  "beamer(JPN)_template.dvi"
+  "beamer(JPN)_template.log"

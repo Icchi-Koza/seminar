@@ -1,0 +1,391 @@
+\documentclass[dvipdfmx]{beamer}
+\usepackage{pxjahyper}%しおりの文字化けを防ぐ
+\usetheme{Frankfurt}
+\usecolortheme{seagull}
+\renewcommand{\kanjifamilydefault}{\gtdefault}%日本語フォントをゴシックに
+\usepackage{graphicx}% 各種画像の張り込み
+\usepackage{amsmath,amssymb}%標準数式表現を拡大する
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\setbeamertemplate{button}{\tikz
+  \node[
+  inner xsep=5pt,
+  draw=white,
+  fill=white,
+  rounded corners=4pt]  {\insertbuttontext};}
+\setbeamercolor{button}{bg=red, fg=blue}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+\usepackage{chngpage}
+\usepackage{caption}
+\newcommand{\bhline}[1]{\noalign{\hrule height #1}}
+\newcommand{\bvline}[1]{\vrule width #1}
+
+%----------- ここからスライド内容 ---------------%
+\title[economic M\&A]{\Huge 日本市場におけるM\&A}
+
+\author[]{細野裕介　細岡健司　小酒井一朗}
+\institute[]{慶應義塾大学経済学部千賀ゼミ}
+\newcommand{\todayAD}{\number\year 年\number\month 月\number\day 日}
+\date{\todayAD}
+
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage %\maketitleに替わるタイトル情報
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+\section{はじめに}
+\begin{frame}
+  \begin{multicols}{2} %追加
+    \begin{figure}
+      \includegraphics[width=\linewidth]{prewar_ma.png}<1,3->
+    \end{figure}
+    \href{https://www.rieti.go.jp/jp/publications/dp/06j044.pdf}{\tiny 宮島(2006)より引用}
+    \begin{figure}
+      \includegraphics[width=\linewidth]{number_of_ma.png}<2->
+    \end{figure}
+    \href{https://www.marr.jp/menu/ma_statistics/ma_graphdemiru/entry/35326}{\tiny 引用：MARR Online-2022.4.30}
+    \columnbreak % 追加
+    \begin{itemize}
+      \item<1,3-> 戦前の日本のM\&Aの山場は1900年代、1920年前後にあった。
+      \item<2-> 戦後のM\&Aに関する１つ目のピークが89～90年の山、2つ目のピークが05～07年の山、3つ目のピークが18年以降。
+      \item[$\blacktriangleright$]<3-> これらのことからM\&A隆盛期には\uncover<3->{\color{red}{国内マクロ経済の拡張期}}\color{black}{と}\uncover<3->{\color{red}{小さな政府による自由な経済}}\color{black}{が関係していると考えられる。}
+    \end{itemize}
+  \end{multicols} % 追加
+\end{frame}
+
+\section{米国との比較}
+  \begin{frame}
+    \begin{itemize}
+      \setlength{\itemsep}{7mm}
+    \item ここからの日本のM\&Aに関するデータは\href{https://auth.lib.keio.ac.jp/db/}{Bloomberg professional}が公表している1993年3月19日～2021年10月4日のIN-INとOUT-IN型を対象とする。
+    \item またアメリカ市場のデータはDavid(2020)から引用する。ここでは\href{https://www.refinitiv.com/en/products/sdc-platinum-financial-securities}{Thomason Reuters SDC Platinum database(SDC)}に収録されているアメリカ市場における1977～2009年のIN-IN型約58,000件が対象とされている。
+    \item 両国ともに取引額が\$1M以上の案件のみを対象としている。
+    \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}
+    \begin{table}[htbp]
+      \begin{minipage}[c]{0.48\hsize}
+      \centering
+          \tiny
+          \captionsetup{labelformat=empty,labelsep=none}
+          \caption{\tiny Transaction Values and Premia in US}
+          \vspace{-1.5truemm}
+          \begin{tabular}{lrr}
+            \bhline{1.5pt}
+            &Trans. Val. (\$M)&Premium(\%)\rule[-2mm]{0mm}{5mm}\\ \hline
+            Mean&267.4&46.8\rule[0mm]{0mm}{3mm}  \\
+            Median&31.0&38.2\\
+            SD&1,911.5&34.8\\
+            Max&186,824.1&200.0\\
+            Min&0.9&0.0\\  \hline
+            N&57,858&5,868\\  \bhline{1.5pt}
+          \end{tabular}
+      \end{minipage}
+      \begin{minipage}[c]{0.5\hsize}
+        \centering
+        \tiny
+        \captionsetup{labelformat=empty,labelsep=none}
+        \caption{\tiny 日本のIN-IN型 M\&A取引}
+        \vspace{-1.5truemm}
+        \begin{tabular}{lrr}
+          \bhline{1.5pt}
+          &Trans. Val. (\$M)&Premium(\%)\rule[-2mm]{0mm}{5mm}\\ \hline
+          Mean&129.9&19.5\rule[0mm]{0mm}{3mm}  \\
+          Median&15.1&13.1\\
+          SD&958.0&33.1\\
+          Max&44,815.1&376.2\\
+          Min&1&-84.6\\  \hline
+          N&10,929&1,617 \\ \bhline{1.5pt}
+        \end{tabular}
+      \end{minipage}
+    \end{table}
+    \begin{itemize}
+      \setlength{\itemsep}{5mm}
+      \item \emph{共通点}
+      \begin{itemize}
+        \item 取引額(value)は右に歪んだ分布をしている一方で、プレミアム（のれん）は平均値と中央値が近しい
+        \item
+      \end{itemize}
+      \item \emph{相違点}
+      \begin{itemize}
+        \item データサンプル数が異なること
+        \item データの取得時期が異なること
+      \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \begin{table}[htbp]
+      \centering
+        \tiny
+        \captionsetup{labelformat=empty,labelsep=none}
+        \caption{\tiny Distribution of Transactions by Number of Acquirer Purchases}
+        \vspace{-1.5truemm}
+        \begin{tabular}{lccc}
+          \bhline{1.5pt}
+          Number of Purchases&Firms&Transactions&Share of Transactions\rule[-1.5mm]{0mm}{3.5mm}\\  \hline
+          1&18,870&18,870&32.6\rule[0mm]{0mm}{3mm}\\
+          2-3&5,777&13,301&23.0\\
+          4-5&1,669&7,345&12.7\\
+          6-7&733&4,695&8.1\\
+          8-10&490&4,311&7.5\\
+          11-15&340&4,251&7.3\\
+          16-20&119&2,100&3.6\\
+          More than 20&107&2,985&5.2\\ \hline
+          Total&28,105&57,858&100.0\\  \bhline{1.5pt}
+        \end{tabular}
+      \centering
+        \tiny
+        \captionsetup{labelformat=empty,labelsep=none}
+        \caption{\tiny 日本市場の吸収・合併回数による買収企業の分布}
+        \vspace{-1.5truemm}
+        \begin{tabular}[c]{lccc}
+          \bhline{1.5pt}
+          Number of Purchases&Firms&Transactions&Share of Transactions\rule[-1.5mm]{0mm}{3.5mm}\\  \hline
+          1&2,422&2,422&20.0\rule[0mm]{0mm}{3mm}\\
+          2-3&1070&2,457&20.2\\
+          4-5&283&1,247&10.3\\
+          6-7&138&887&7.3\\
+          8-10&86&760&6.3\\
+          11-15&63&798&6.6\\
+          16-20&31&569&4.7\\
+          21-30&30&749&6.2\\
+          31-40&11&381&3.1\\
+          41-50&5&227&1.9\\
+          More than 50&11&808&6.7\\
+          Multiple buyer&&194&1.6\\
+          Unnamed&&638&5.3\\  \hline
+          Total&4,150&12,137&100.2\\  \bhline{1.5pt}
+        \end{tabular}
+    \end{table}
+  \end{frame}
+
+\begin{frame}
+    \begin{itemize}
+      \setlength{\itemsep}{7mm}
+      \item 共通点　
+      \begin{itemize}
+        \item 両市場において1度M\&Aをした企業はその後も繰り返す傾向が強い
+      \end{itemize}
+      \item 相違点
+      \begin{itemize}
+      \item アメリカ市場に比して日本市場では初経験（取引回数が1回）の企業が相対的に低い（アメリカ市場においては32.6\%に対し、日本市場では20.0\%）。
+      \item  故に、日本市場ではマーケットプレイヤーの減少に対し、アメリカ市場よりも寛容的であるといえる。しかし、マーケットシェアに関する拡大に関しては不明瞭であり、追研究が必要である。
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  宮島(2006)によると、M\&Aの目的としては数種類存在し、主たる目的は
+  \begin{itemize}
+    \item[1.] 買収企業の新規事業への進出・マイナー事業の拡大
+    \item[2.] 同業界のライバル企業買収を通したノウハウ獲得や企業価値の伸張
+  \end{itemize}
+  の2種である。\\
+  このことと上記のデータより、
+  \begin{itemize}
+    \item アメリカ市場では、プレミアム（技術力や人的資源、顧客ネットワーク等の非継承企業
+    の超過収益力を表す）が相対的に高く、M\&Aの主目的は企業経営・競争力向上のためのノウハウ
+    獲得だと考えられる。
+    \item 日本市場でのM\&Aは金銭的資産の比率が高く、プレミアムが低い事から企業のコングロマリット化
+    が目的だと考えられる。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  また、従来アメリカでは20世紀末ごろから企業統制関連法が緩く、市場の不均衡に対し
+  寛容的だと言われていたが、マーケットプレイヤーの変容に注目すると日本市場の方が
+  寧ろ寛容的だったと言える。
+\end{frame}
+
+\section{日本市場におけるM\&A企業の関係}
+\begin{frame}
+  \begin{figure}
+    \begin{tabular}{cc}
+      \begin{minipage}[c]{0.3\hsize}
+        \centering
+        \includegraphics[keepaspectratio,width=\textwidth]{DAVID_figure1.png}
+      \end{minipage}
+      \begin{minipage}{0.6\hsize}
+        \centering
+        \includegraphics[keepaspectratio,width=\textwidth]{output_EBIDTA.png}
+      \end{minipage}
+    \end{tabular}
+  \end{figure}
+  \begin{itemize}
+    \item 左側の図とpanel A.$\Rightarrow$米国市場と日本市場におけるEBDTAが正の企業同士の比較
+    \item panel C.とPanel D.$\Rightarrow$日本市場におけるEBITDAが負の値をとる企業を入れた際の比較
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.25in}
+    \item 左図とパネルAとの比較から、
+    \begin{itemize}
+      \item 両国とも買収側企業の利益やEBIDTAが被買収側のそれを上回っている。（{\color{red}high-buys-low}型合併）
+      \item 日本でのM\&Aでは、収益力の低い被買収企業に対して、収益力がかなり高い事がわかる。（一層の{\color{red}high-buys-low}型合併）
+      \item 米国市場では低収益力企業の被買収企業の合併は、{\color{red}like-buys-like}の傾向がみられる。
+      \vspace{3mm}
+      \item[$\blacktriangleright$] 低収益力企業を買収する際に、日本市場では、企業間の収益力差異が如実に表れている。
+    \end{itemize}
+    \item パネルCとパネルDの比較から、日本市場では、 赤字企業を含めると、一層収益力の低い被買収企業に対して、high-buys-lowの傾向が一層強くなる。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+    \begin{figure}
+      \includegraphics[width=0.9\linewidth]{output_financial_leverage.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.15in}
+    \item ここでは、総負債（総資本）と自己資本より自己資本比率の逆数として財務レバレッジを算出した。
+    \item マクロ的な視点では買収側企業と被買収側企業の２社間での財務レバレッジ比率の大小による趨勢は見受けられない。
+    \item パネルBを詳細に見ることで、財務レバレッジ比率の低い企業に対する買収事例では、買収企業のそれは被買収企業のそれよりたかい。一方で、
+    財務レバレッジ比率の高い企業に対する吸収合併は買収側企業のそれの方が総じて低くなっていることが分かる。 
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \begin{itemize}
+    \item 財務レバレッジ比率は{\color{red}企業の成長度}と{\color{red}企業経営の危険度}を反映した指数と考えられる。\\
+    また、企業の成熟度は企業の成長度と反比例する傾向が強いと考える。
+    \vspace{0.2in}
+    \begin{itemize}
+      \setlength{\itemsep}{3mm}
+      \item[$\longrightarrow$] {\color{blue}企業経営リスクが高いが、成長度の高い高い企業}がM\&Aを行う際には、{\color{blue}成熟しているが自社より成長度が鈍っている企業（事業）}の買収を好む傾向にある。
+      \item[$\longrightarrow$] {\color{blue}経営が安定的で成長が鈍いが成熟度が高い企業}が、M\&Aを行う際には、{\color{blue}マイナーである（成熟度が低い）が自社に比べて、相対的に成長度の高い
+      他産業のマイナーな企業（事業）}をターゲットに好む傾向がある。
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 財務レバレッジ比率を企業の信頼度と考え、財務レバレッジの高さが多角的事業を行っている企業または成長度の高さと捉える。
+    \vspace{0.2in}
+    \begin{itemize}
+      \setlength{\itemsep}{3mm}
+      \item[$\longrightarrow$] 成長度が高く、新規事業展開に意欲的な専門性の高い企業が、コングロマリットを目的として、成熟度が高く成長度の鈍い
+      企業の一部事業や部門を吸収・合併していると考えられる。
+      \item[$\longrightarrow$] 成熟度が高く成長度の低い多角的経営企業が新規事業
+      開拓目的の為に、小規模で成長度が高く、専門性の高い企業や事業部を買収していると考えらえる。そして、既存事業の成長度が鈍り始めると、更なるコングロマリットを形成する傾向が高いと考えられる。
+      \begin{itemize}
+        \item[$\to$] 実際には財閥系企業を中心とした総合商社の事業拡大モデルと似つかわしい。
+      \end{itemize}
+      \item[$\longrightarrow$] パネルCとパネルDの比較より、負債超過企業を含めると
+      負債超過企業を対象にM\&Aする事例では、買収側企業は{\color{red}経営が安定している多角的企業}または{\color{red}成長度と専門性の比較的高い企業}のどちらかであるが、恐らく前者だと考えられる。
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+    \centering
+    \begin{figure}
+      \includegraphics[keepaspectratio,scale=0.5]{output_cashratio.png}
+    \end{figure}
+    \begin{itemize}
+      \item ここでは流動負債（短期負債）に対する現金預金の比率として、現金比率を定義する。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.1in}
+    \item 図の左側では買収側企業の現金比率が、ターゲット側のそれを上回る傾向が強く、
+    右側では逆転する傾向が強い
+    \vspace{0.1in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.05in}
+      \item[$\longrightarrow$] 現金比率の高さに対する解釈を流動負債の低さに起因すると考えると、
+      成熟度の高い多角的経営企業ほど内部留保率が高いと考えられ、そういった企業は現金比率の高い企業とのM\&Aを好む。
+      \item[$\longrightarrow$] 図の左側より、現金比率の低い企業は一層現金比率の低い企業とのM\&Aを好む。
+    \end{itemize}
+    \item[$\blacktriangleright$] {\color{red}事業拡大を図る大企業}は{\color{red}成長度の鈍い大企業（事業）}とのM\&Aを好む。または
+      または、{\color{red}IT企業などの借入金額は小さいが専門性と成長度が高い企業}とのM\&Aを好む。一方で、{\color{red}借り入れ依存的
+      な成長企業}は同じく{\color{red}借入投資依存型の企業}をM\&A相手として好み、{\color{blue}主幹事業の拡大}または{\color{blue}コングロマリット化}を意図していると考察できる。  
+  \end{itemize}
+  \end{frame}
+
+\begin{frame}
+    \begin{figure}
+      \includegraphics[keepaspectratio,scale=0.4]{output_SGAratio.png}
+    \end{figure}
+    \begin{itemize}
+      \item  ここでは、売上高販管費率を{\color{red}売上高販管費率＝（粗利益率ー営業利益率）＊100}
+      と定義し算出した。この値が低いほど企業の採算性が高いことを意味する。
+      \item データが算出できた事例（960件）の内、買収側企業の採算性が被買収側企業のそれより高かった事例は約34.5\%であった。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}
+    \includegraphics[keepaspectratio,scale=0.4]{output_outin_ebidta.png}
+  \end{figure}
+  \begin{itemize}
+    \item 日本市場のOUT-IN型M\&A事例においてEBIDTAが2社ともに正であるもの。
+    132件中126件が買収企業の方が高収益力であった。
+    また、高収益力企業ほど高収益力企業を買収している事が分かり、その傾向の強さもIN-IN型M\&Aに見られるものと同じである。
+    これは図6の相関係数と図2-Aの相関係数の類似性から明らかである。
+  \end{itemize}
+\end{frame}
+
+\section{まとめ}
+\begin{frame}
+  \begin{block}{日本市場におけるIN-IN型M\&A}
+    \begin{itemize}
+      \setlength{\itemsep}{0.15in}
+      \item 日本市場は米国市場に比べ相対的にM\&Aのプレミアム(金銭化の難しい無形資産)の評価が低く、このことからM\&Aの主目的はコングロマリットである。
+      \item 1度事業拡大を図った企業はその後も繰り返し拡大する。
+      \item 高収益力の企業が低収益力の企業をM\&Aしている。収益力の差は低収益企業のM\&Aほど強いが、2企業間の収益力には正の相関関係がある。
+      \item M\&Aによって事業拡大を行う際には、成熟度が高く成長度が低い企業は自社より成長度の高い企業を相手にするが、経営リスクを伴っているが、成長度の高い企業は自社より成長度の乏しい企業を相手に選定する。
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  これらの事実から、成長度の高い企業がまずは成長度が相対的に乏しいが採算性の高い企業をM\&Aすることで、収益力を引き上げ、市場占有度を上げる。
+  そして、行き詰まりを感じると、他分野に進出し、同じ事を繰り返す。これらを繰り返すことで企業経営の多角化を成し遂げていると考えられる。
+  これを実証するためには、M\&Aの市場占有度の変化を考察する必要があり、それは今後の課題である。\\
+  \vspace{0.35in}
+  \begin{itemize}
+    \item[$\blacktriangleright$] M\&Aを通した企業への生産性への影響（小酒井）
+    \item[$\blacktriangleright$] M\&Aを通した市場シェアへの影響（細岡、細野）
+  \end{itemize}
+\end{frame}
+
+
+\section{参考文献}
+\begin{frame}
+    \begin{itemize}
+      \item \href{https://www.marr.jp/menu/ma_statistics/ma_graphdemiru/entry/35326}{\beamerbutton{M\&A Research Report Online}}
+      \item \href{https://www.rieti.go.jp/jp/publications/dp/06j044.pdf}{\beamerbutton{急増するM\&Aをいかに理解するか：その歴史的展開と経済的役割、　宮島英昭}}
+      \item \href{https://academic.oup.com/restud/article-abstract/88/4/1796/5976980}{\beamerbutton{The Aggregate Implications of Mergers and Acquisitions,  Joel M David}}
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+\end{document}

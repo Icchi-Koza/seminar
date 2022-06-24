@@ -1,0 +1,49 @@
+\documentclass[dvipdfmx]{beamer}
+\usepackage{pxjahyper}%しおりの文字化けを防ぐ
+\usetheme{Frankfurt}
+\usecolortheme{crane}
+\renewcommand{\kanjifamilydefault}{\gtdefault}%日本語フォントをゴシックに
+\usepackage{graphicx}% 各種画像の張り込み
+\usepackage{amsmath,amssymb}%標準数式表現を拡大する
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\setbeamertemplate{button}{\tikz
+  \node[
+  inner xsep=5pt,
+  draw=white,
+  fill=white,
+  rounded corners=4pt]  {\insertbuttontext};}
+\setbeamercolor{button}{bg=red, fg=blue}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+\usepackage{chngpage}
+\usepackage{caption}
+\newcommand{\bhline}[1]{\noalign{\hrule height #1}}
+\newcommand{\bvline}[1]{\vrule width #1}
+
+%----------- ここからスライド内容 ---------------%
+\title[]{\Huge }
+
+\author[]{}
+\institute[]{}
+\newcommand{\todayAD}{\number\year 年\number\month 月\number\day 日}
+\date{\todayAD}
+
+
+\begin{document}
+
+
+\begin{frame}
+  \titlepage %\maketitleに替わるタイトル情報
+\end{frame}
+
+\begin{frame}
+  \tableofcontents
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,153 @@
+\documentclass[dvipdfmx]{beamer}
+\usetheme{Boadilla}
+\usecolortheme{whale}
+\usepackage{umoline}
+\usepackage{graphicx}% 各種画像の張り込み
+\usepackage{amsmath,amssymb}%標準数式表現を拡大する
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{otf}
+\setbeamertemplate{navigation symbols}{}
+\AtBeginSection[]{
+    \frame{\tableofcontents[currentsection, hideallsubsections]} %目次スライド
+}
+\setbeamertemplate{footline}[frame number]
+\usepackage{chngpage}
+\usepackage{caption}
+\newcommand{\bhline}[1]{\noalign{\hrule height #1}}
+\newcommand{\bvline}[1]{\vrule width #1}
+
+%----------- ここからスライド内容 ---------------%
+\title[]{\small Technical Change, Inequality, and the Labor Market}
+\subtitle{§5 Acceleration in Skill Bias\\ -A Puzzle: The Decline in Wages
+of Low-Skill Workers-}
+
+\author[]{Ichiro Kozakai}
+\date{\today}
+
+
+\begin{document}
+\begin{frame}
+  \titlepage 
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item This sub-section deals with why the wage for the unskilled
+    is relatively decreasing, leading to wage-premium expansion.  \vspace{0.1in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.15in}
+      \item According to the theory mentioned in 3rd section, the increasing supply of
+      educated workers raises the productivity of high-skill workers, $A_{h}$, leading to the wages up as a whole.
+      \item The former papers discuss the faster technology progress lower the skill premium, since the technology seems to work as
+      making the productivity gap, $ \frac{A_{h}}{A_{l}}$, smaller.
+      \item This technology revolution in these past decades, however, works in the verse way, boosting the relative productivity, $\frac{A_{h}}{A_{l}}$.
+      \begin{itemize}
+        \item[$\Longrightarrow$] $\ln \omega =\frac{\sigma -1}{\sigma}\ln (\frac{A_{h}}{A_{l}})-\frac{1}{\sigma}\ln (\frac{H}{L})$, which results in higher, \uncover<2->{\color{red}"erosion effect"}.
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Repost}
+  \begin{equation}
+    \begin{split}
+      A_{l}=\phi_{l}(g)a\\
+      \phi_{l}^{\prime}<0\\
+      A_{h}=\phi_{h}a        \notag
+    \end{split}
+  \end{equation}
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.2in}
+    \item The wage for unskilled workers is re-written as 
+    \begin{equation}
+      \begin{split}
+        w_{L}=\phi_{l}(g)a[1+\phi_{h}^{\rho}\left(\frac{H}{L}\right)^{\rho}]^{\frac{1-\rho}{\rho}}     \notag
+      \end{split}
+    \end{equation}  \vspace{0.15in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.1in}
+      \item[$\Longrightarrow$] The growth of wage for the lower skilled is; $\frac{\dot{w_{L}}}{w_{L}}=g(1+\epsilon_{\phi})$\\ \hspace{0.5in} \footnotesize $\epsilon$: the elasticity of of the function, $\phi_{l}$, and $\phi_{l}^{\prime}<0$.
+      \item[$\Longrightarrow$] If the value of $\epsilon$ is less than -1 ($\epsilon<-1$), the  wage for low-educated worker is absolutely decreasing. 
+    \end{itemize}
+    \item Firm's positive actions to technology cause the capital-labor ratio for the low-educated,
+    with the wage for the less-skilled falling.
+    \begin{itemize}
+      \setlength{\itemsep}{0.1in}
+      \item[$\Longrightarrow$] Because the equilibrium rate of return to capital increases.\hspace{0.2in} (by Cassel)
+      \item[$\Longrightarrow$] Because the firms devotes more resources to opening specialized jobs for the high-skilled.  \hspace{0.2in} (in this paper) 
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \begin{itemize}
+    \item<1-> The production function is defined as following;\\
+  \end{itemize}
+  \vspace{0.15in}
+  \begin{equation}
+    \begin{split}
+      Y_{h}=K_{h}^{1-\alpha}(A_{h}H)^{\alpha}\\
+      Y_{l}=K_{l}^{1-\alpha}(A_{l}L)^{\alpha}\\
+      \bar{K}=K_{h}+K_{l}            \notag
+    \end{split}
+  \end{equation}
+  \hspace*{0.25in} $Y_{l}$ and $Y_{h}$ are perfect substitutes.
+  \vspace{0.15in}
+  \begin{itemize}
+    \item<2-> At equilibrium point, the $MP_{l}$ in each type of labor is balanced;
+    \begin{equation}
+      \begin{split}
+        \frac{K_{l}}{A_{l}L}=\frac{K_{h}}{A_{h}H}=\frac{K-K_{l}}{A_{h}H}   \notag
+      \end{split}
+    \end{equation}
+    \item<2-> This is rewritten as following;
+    \begin{equation}
+      \begin{split}
+        \frac{\bar{K}}{K_{l}}-1={\frac{A_{h}}{A_{l}}}{\frac{H}{L}}    \notag
+      \end{split}
+    \end{equation}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \begin{itemize} 
+    \setlength{\itemsep}{0.15in}
+    \item The wage for the low-skilled is written under the condition of perfectly competitive labor market,
+    \begin{equation}
+      \begin{split}
+        w_{L}=MP_{L}=(1-\alpha)A_{l}^{\alpha}K_{l}^{1-\alpha}L^{\alpha-1}     \notag
+      \end{split}
+    \end{equation} 
+    and this is falling.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{0.15in}
+    \item Potential problems in this analysis are
+    \vspace{0.05in}
+    \begin{itemize}
+      \setlength{\itemsep}{0.1in}
+      \item This theory is based on the assumption of the increase of price of capital
+      \item Financial Policy raises intentionally the interests rate.
+      \begin{itemize}
+        \item[$\Rightarrow$] Future studies will clarify that the causal relation between higher interests rate and lower wage for the uneducated.  
+      \end{itemize}
+    \end{itemize}
+    \item The next section explains that the effect of technical
+    change on the organization of the labor market both amplifies the effect of
+    technology on wage inequality, and provides a possible explanation for this decline.
+  \end{itemize}
+\end{frame}
+\end{document}

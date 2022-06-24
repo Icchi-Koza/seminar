@@ -1,0 +1,183 @@
+\documentclass[dvipdfmx]{beamer}
+\usepackage{pxjahyper}%しおりの文字化けを防ぐ
+\usetheme{Montpellier}
+\usecolortheme{seahorse}
+\renewcommand{\kanjifamilydefault}{\gtdefault}%日本語フォントをゴシックに
+\usepackage{graphicx}% 各種画像の張り込み
+\usepackage{amsmath,amssymb}%標準数式表現を拡大する
+\usepackage{color}
+
+%----------- ここからスライド内容 ---------------%
+\title[]{生産関数を用いた\\マークアップ率の計測に関する検証}
+\subtitle{中村豪(東京経学会誌\ 第299号)}
+
+\author[]{小酒井一朗}
+\institute[]{慶應義塾大学経済学部}
+\date[]{2022年4月11日}
+
+
+\begin{document}
+
+
+\begin{frame}
+\titlepage %\maketitleに替わるタイトル情報
+\end{frame}
+
+\begin{frame}
+\frametitle{目次}
+\tableofcontents
+\end{frame}
+
+\section{イントロダクション}
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{7mm}
+    \item マークアップ率（限界費用に対する製品価格の比率）とは、\alert{企業の価格支配力の大きさについての指数}
+    \item 代表的なマークアップ率の計測手法
+    \begin{itemize}
+      \setlength{\itemsep}{5mm}
+      \item 売上高ないし製品価格の値を総費用や単位当たりの費用で割る
+      \item 企業の最適化行動を踏まえた手法として、\\
+      \begin{enumerate}[1]
+        \item 市場構造を丸ごと推定してマークアップ率をもとめる手法
+        \item 生産関数に基づいて、生産‐資本比率の変化率と労働‐資本比率の変化率の関係からマークアップ率をもとめる手法
+        \item 企業の費用最小化行動を想定して、算出の成長率を、要素所得比率でウェイト付けした生産要素投入の加重平均の成長率に回帰させる手法
+        \item DW
+      \end{enumerate}
+      がある。
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+\Large 各々の手法の特徴と問題点\\
+\vspace{0.2in}
+\normalsize
+\begin{itemize}
+  \setlength{\itemsep}{3.5mm}
+  \item 売上高と総費用による算出は、（１）\color{blue}{限界費用ではなく平均費用と製品価格の比率であり、厳密なマークアープ率とは異なり}\color{black}{、（２）}\color{blue}{会計上の概念とは異なる経済的な費用概念の数値を、実際の財務データ等から得ることは困難}\color{black}{である。}
+  \item 市場構造による推定は、\color{red}{需要関数を具体的に推定した上で企業間の競争の態様を仮定し、企業が利潤最大化行動をとっているとすれば、実際の価格や数量のデータから、その背後にあるはずの限界費用の値を推定できる。その為、非常に緻密な分析が可能}\color{black}{になる。しかし、}\color{blue}{需要関数を推定できるだけの情報、すなわち製品価格と数量、製品の属性、さらには需要関数を推定するための操作関数などが必要だが、データの入手に係り、複数の産業を比較したり、経済全体の状況を捉えたいときには適用困難}な手法ではある。
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \setlength{\itemsep}{3.5mm}
+    \item 生産関数に基づく推定は、後者は生産関数を推定するデータがあればほぼ適用できるようなものであり、前者に比べ汎用性が高い。一方で、\color{blue}{産業レベルあるいはマクロ経済全体で集計したマークアップ率を求めるものであり、代表的な企業を近似的にでも想定できるような産業であれば、有用な譲歩を得られる}\color{black}{が、同じ産業内でも企業間の異質性が高まっている近年においては企業ごとに異なりうる形でマークアップ率を推定できる方が望ましい。}
+    \item 近年の市場構造等を分析する手法として、DW（De Loecker and Warzynski）が、生産関数に基づいた企業の費用最小化行動を前提としてマークアップ率を算出している。この手法は\color{blue}{生産関数自体は産業レベル推定する為、同一産業内で生産関数のパラメータは共通}\color{black}{だが、}\color{red}{生産要素の利用状況などの違いから、企業によって異なる形でマークアップ率を計測可能}。
+  \end{itemize}
+\end{frame}
+
+
+\section{マークアップ率の計測}
+\subsection{費用最小化問題とマークアップ率}
+\begin{frame}
+  ここからはDWによるマークアップ率の計測を試みる。この手法は企業の供給側の生産関数を推定する事から、生産関数を次のように定める。\\
+
+\end{frame}
+
+
+\begin{frame}
+  さらに企業活動を考える上での制約曲線としての費用関数は次のように定める。\\
+  \begin{beamercolorbox}
+  [wd=50mm, sep=2pt, shadow=true, rounded=false]
+  {frametitle}\bfseries  \Large
+  $$P_{it}^{X}X_{it}+r_{it}K{it}$$
+  \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}
+  これらの生産関数と費用関数から費用最小化条件はラグランジュから\\
+    $${\mathcal L}(X_{it}, K_{it}, \lambda)=P_{it}^{X}X_{it}+r_{it}K_{it}+\lambda[Y_{it}-F(X_{it}, K_{it}, \omega_{it} )]$$\\
+    ここで生産関数における可変的投入要素の弾力性を$\beta_{X,it}$(企業や時期によって異なりうる)とすると、
+    $$\beta_{X,it}\equiv\frac{\frac{\partial F}{Y_{it}}}{\frac{\partial X}{X_{it}}}={\frac{\partial F}{\partial X}}{\frac{X_{it}}{Y_{it}}}$$
+\end{frame}
+
+\begin{frame}
+  Xに関するラグランジュ条件は、$$P_{it}^{X}-\lambda{\frac{\partial F}{\partial X}}=0\Leftrightarrow P_{it}^{X}-\lambda \frac{\beta_{X, it}Y_{it}}{X_{it}}=0$$\\ $$\Leftrightarrow \frac{P_{it}^{X}X_{it}}{Y_{it}}-\lambda\beta_{X, it}=0$$\\生産物価格$P_{it}(\neq0)$より、
+  $$\Leftrightarrow \frac{P_{it}^{X}X_{it}}{P_{it}Y_{it}}-\lambda\frac{\beta_{X,it}}{P_{it}}=0$$
+\end{frame}
+
+\begin{frame}
+  マークアップ率（$\mu$）を生産物価格の限界費用の比と定義すると、$$\mu\equiv\frac{P}{MC}$$\\
+  また企業の生産限界費用は$\frac{\partial L}{\partial Y}=\lambda$となるために、次の関係を得られる。\\
+  \begin{beamercolorbox}
+  [wd=50mm, sep=2pt, shadow=true, rounded=false]
+  {frametitle}\bfseries  \Large
+  $$\mu_{it}=\beta_{it}*\frac{P_{it}Y_{it}}{P_{it}^{X}X_{it}}$$
+\end{beamercolorbox}
+つまり、生産関数を用いたマークアップ率は\color{red}{可変的投入要素の弾力性}\color{black}{と}\color{red}{名目中間投入額比率の逆数}\color{black}{の積で定義される。}
+\end{frame}
+
+
+\subsection{代理変数を用いた生産関数の測定}
+\begin{frame}
+  まず、企業の生産性が投入要素と独立な際の生産関数で考える。この時、企業の生産関数を次のように定義できる。\huge$$Y_{it}=F(X_{it}, K_{it})e^{\omega_{it}}e^{\varepsilon_{it}}$$\\
+  \normalsize
+  \begin{itemize}
+    \item この時企業は生産効率性とは別に投入要素の量を独立に決定する
+    \item $\varepsilon$は企業自身にも観測されえないショック
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  しかし、現実には企業は自社の生産効率性を鑑みて、中間投入要素の投入量を決定するために、上述の生産関数をそのまま用いると\alert{内生性バイアス}が生じる。そこで内生性バイアスに対する処理法として次の２つが考えられる。
+  \begin{description}
+    \item[＊固定効果]\mbox{}\\
+    企業の生産効率性が企業ごとには異なるが、同一企業の効率性は常に一定と仮定する。技術の進歩から考えて、短期的には適合的だが、中長期の分析には不適切と考えられる。
+    \item[＊代理変数]\mbox{}\\
+    生産性とは相関を持たず、生産要素投入とは相関を持つような操作関数を用いる。
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  ここでは企業の設備投資関数（I）に関して次のような仮定を置く。$$I_{it}=I(\omega_{it}, K_{it} ),\hspace{0.15in} \frac{\partial I}{\partial\omega}>0$$この時、生産性に関する設備投資関数の逆関数は$$\iota\equiv I^{-1}\hspace{0.4in}\Longrightarrow\hspace{0.4in}e^{\omega_{it}}=\iota(I_{it}, K_{it})$$と書き表せ、生産関数は\Large $$Y_{it}=F(X_{it}, K_{it})\iota(I_{it}, K_{it})e^{\varepsilon_{it}}\equiv G(X_{it}, \phi(I_{it}, K_{it}))e^{\varepsilon_{it}}$$  \normalsize
+  上述の式では生産性（$\omega$）と$X_{it}$の内生性は対処されたが、$K_{it}$に関しては$\iota(I_{it}, K_{it})$と$F(X_{it}, K_{it})$における$K_{it}$の識別できない。
+\end{frame}
+
+\begin{frame}
+代理変数を用いるためには、代理変数が観測可能な変数の関数で表されることに加え、逆関数が存在しなければいけない。その為には、代理変数に関する関数が正値でなければいけないことがわかる。\\
+さらに生産性（$\omega$）は可変的投入要素とも相関を持つことから上述の関数では不十分である。そこで$X_{it}$を生産性と資本ストックの関数$X_{it}=X(\omega_{it}, K_{it})$とすると$$G(X_{it}, \phi(I_{it}, K_{it}))=G(X(\phi(I_{it}, K_{it}), K_{it}), \phi(I_{it}, K_{it}))\equiv H(K_{it}, I_{it})$$
+よって生産関数は$$Y_{it}=H(K_{it}, I_{it})e^{\varepsilon_{it}}=\Phi(X_{it}, K_{it}, I_{it})e^{\varepsilon_{it}}$$と書き直せる.
+\end{frame}
+
+\begin{frame}
+  まず最初に生産ショックを識別するために、パネルデータを用いて、$\Phi$の推定値（$\hat{\Phi}$）を算出する。\\さらに、$\Phi(X_{it}, K_{it}, I_{it})=F(X_{it}, K_{it})e^{\omega_{it}}$に回帰する。\\
+\end{frame}
+
+\subsection{本稿における生産関数推定とマークアップ率の計測}
+\begin{frame}
+  このペーパーではOPとLPの推定を用いて２手法における違いを検証していく。また、今回は生産関数をコブ・ダグラス型生産関数（$Y_{it}=X_{it}^{\beta_{x}}L_{it}^{\beta_{l}}K_{it}^{\beta_{k}}e^{\omega_{it}}e^{\varepsilon_{it}}$）を用いる。\\
+  このとき問題点としては、各生産要素のパラメーターは普遍のものとして扱われる。その為に、今回はデータを４つの期間に分けて推定する。まず最初に両辺の対数を取ると、$$y_{it}=\beta_{x}x_{it}+\beta_{l}l_{it}+\beta_{k}k_{it}+\omega_{it}+\varepsilon_{it}$$\\
+  また、データの売上高には$\varepsilon$の影響も含まれているために、名目中間投入額比率($\sigma_{X, it}$)とマークアップ率（$\mu_{it}^{,}$）を次のように定める。$$\sigma_{X, it}=\frac{P_{it}^{X}X_{it}}{\frac{P_{it}Y_{it}}{e^{\hat{\varepsilon_{it}}}}},\hspace{0.2in}\mu_{it}^{,}=\frac{\beta_{X, it}}{\sigma_{X, it}}$$
+\end{frame}
+
+
+\section{使用するデータ}
+\begin{frame}
+  \begin{itemize}
+    \item 対象データは1980～2012年の日本の上場企業4,796社個別財務データとJIPデータベース2015から得られる産業レベルの変数。
+    \item 産業レベルの変数は2000年基準年とした売上高のデフレータ、中間投入のデフレータ、労働時間、減価償却率。デフレータはJIPデータベースから得られる名目値と実質値の比率、労働時間はマンアワーの労働投入を従業者数でわったもの、減価償却率は$$\delta_{t}=\frac{K_{t}+I_{t}-K_{t+1}}{K_{t}}$$を各産業ごとに算出。
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item 各企業の産業・業種分類は、JIPデータベースと東証業種分類では異なる為、JIPデータベースにおける産業分類と国際標準産業分類（ISIC）における分類を調整した。
+    \item 企業の財務データから得られる実質売上高、実質中間投入、マンアワーの労働投入、実質資本ストックを用いる。実質売上高、実質中間投入に関しては、各年度の名目値とその企業が属する産業のデフレーターで実質値に直している。マンアワーの労働投入は、各年度の期末従業者数に産業の労働時間を掛けて求める。資本ストックについては恒久棚卸法を用いて実質の資本ストックを算出。実質設備投資は各企業の名目粗資本ストック増を産業の設備投資デフレータで実質化したものを用い、減価償却率も産業のものを利用。
+  \end{itemize}
+\end{frame}
+
+
+\section{分析結果}
+\subsection{生産関数の推定結果}
+\begin{frame}
+
+\end{frame}
+
+
+\section{まとめ}
+\begin{frame}
+
+\end{frame}
+\end{document}

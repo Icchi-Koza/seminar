@@ -1,0 +1,9 @@
+\beamer@sectionintoc {1}{イントロダクション}{3}{0}{1}
+\beamer@sectionintoc {2}{マークアップ率の計測}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{費用最小化問題とマークアップ率}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{代理変数を用いた生産関数の測定}{11}{0}{2}
+\beamer@subsectionintoc {2}{3}{本稿における生産関数推定とマークアップ率の計測}{16}{0}{2}
+\beamer@sectionintoc {3}{使用するデータ}{17}{0}{3}
+\beamer@sectionintoc {4}{分析結果}{19}{0}{4}
+\beamer@subsectionintoc {4}{1}{生産関数の推定結果}{19}{0}{4}
+\beamer@sectionintoc {5}{まとめ}{20}{0}{5}
